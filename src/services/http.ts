@@ -4,13 +4,14 @@ const baseUrl = import.meta.env.VITE_API_BASE_URI;
 
 type Response<T> = {
   data: T;
-  meta?: any;
+  meta?: T;
   statusCode: number;
   message: string;
 };
-
-// Update the get function to accept a generic type T
-export const get = async <T>(endpoint: string): Promise<Response<T>> => {
+export const get = async <T>(
+  endpoint: string,
+  p0: { params: { page: number; limit: number; search: string } }
+): Promise<Response<T>> => {
   // Ensure baseUrl is properly defined and used
   const response = await fetch(`${baseUrl}/${endpoint}`, {
     // Add slash if needed
