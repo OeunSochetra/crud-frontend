@@ -1,4 +1,4 @@
-import { get } from "../services/http";
+import { get, deleteData } from "../services/http";
 import { ref } from "vue";
 import { defineStore } from "pinia";
 
@@ -25,6 +25,7 @@ export const useProductStore = defineStore("product", () => {
       if (res.message === "success") {
         productsList.value = res?.data;
         meta.value = res.meta;
+        console.log("meta", meta.value);
       } else {
         console.error("Failed to fetch products:", res.message);
       }
@@ -33,5 +34,26 @@ export const useProductStore = defineStore("product", () => {
     }
   };
 
-  return { productsList, GET_PRODUCT };
+  const DELETE_PRODUCT = async (id: string) => {
+    try {
+      const res = await deleteData<{ message: string }>("api/products", id);
+
+      if (res.message === "success") {
+        console.log("Product deleted successfully");
+      } else {
+        console.error("Failed to delete product:", res.message);
+      }
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
+  };
+
+  return {
+    productsList,
+
+    //function
+
+    GET_PRODUCT,
+    DELETE_PRODUCT,
+  };
 });

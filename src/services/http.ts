@@ -29,3 +29,21 @@ export const get = async <T>(
   // Type the return value using the Response type
   return (await response.json()) as Response<T>;
 };
+
+export const deleteData = async <T>(
+  endpoint: string,
+  id: string
+): Promise<T> => {
+  const response = await fetch(`${baseUrl}/${endpoint}/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Network response was not ok: ${response.statusText}`);
+  }
+
+  return (await response.json()) as T;
+};
