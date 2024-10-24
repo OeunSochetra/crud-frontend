@@ -9,6 +9,29 @@ type Response<T> = {
   message: string;
 };
 
+// export function to create new product
+
+export const post = async <T>(
+  endpoint: string,
+  data: T
+): Promise<Response<T>> => {
+  const response = await fetch(`${baseUrl}/${endpoint}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Network response was not ok: ${response.statusText}`);
+  }
+
+  return (await response.json()) as Response<T>;
+};
+
+// export function to get all product
+
 export const get = async <T>(
   endpoint: string,
   params: { page: number; limit: number; search: string }
@@ -34,6 +57,8 @@ export const get = async <T>(
 
   return (await response.json()) as Response<T>;
 };
+
+// export function to delete product
 
 export const deleteData = async <T>(
   endpoint: string,

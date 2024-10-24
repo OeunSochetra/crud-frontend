@@ -1,7 +1,7 @@
-import { get, deleteData } from "../services/http";
+import { get, deleteData, post } from "../services/http";
 import { ref } from "vue";
 import { defineStore } from "pinia";
-import { IProduct, IMeta } from "../constants/common";
+import { IProduct, IMeta, ICreateProduct } from "../constants/common";
 
 export const useProductStore = defineStore("product", () => {
   const productsList = ref<IProduct[]>([]);
@@ -12,6 +12,22 @@ export const useProductStore = defineStore("product", () => {
     limit: 10,
     search: "",
   });
+
+  // create new product
+
+  const CREATE_PRODUCT = async (data: ICreateProduct) => {
+    try {
+      const res = await post<ICreateProduct>("api/products", data);
+
+      if (res.message === "success") {
+        console.log("Product created successfully");
+      } else {
+        console.error("Failed to create product:", res.message);
+      }
+    } catch (error) {
+      console.error("Error creating product:", error);
+    }
+  };
 
   const GET_PRODUCT = async () => {
     try {
@@ -52,6 +68,7 @@ export const useProductStore = defineStore("product", () => {
 
     //function
 
+    CREATE_PRODUCT,
     GET_PRODUCT,
     DELETE_PRODUCT,
   };
