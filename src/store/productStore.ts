@@ -1,10 +1,11 @@
 import { get, deleteData } from "../services/http";
 import { ref } from "vue";
 import { defineStore } from "pinia";
+import { IProduct, IMeta } from "../constants/common";
 
 export const useProductStore = defineStore("product", () => {
-  const productsList = ref<any[]>([]);
-  const meta = ref<any>(null);
+  const productsList = ref<IProduct[]>([]);
+  const productMeta = ref<IMeta | null>(null);
 
   const queryProduct = ref({
     page: 1,
@@ -14,16 +15,16 @@ export const useProductStore = defineStore("product", () => {
 
   const GET_PRODUCT = async () => {
     try {
-      const res = await get<any[]>("api/products", {
+      const res = await get<IProduct[]>("api/products", {
         page: queryProduct.value.page,
         limit: queryProduct.value.limit,
         search: queryProduct.value.search,
       });
 
       if (res.message === "success") {
-        productsList.value = res?.data;
-        meta.value = res.meta;
-        console.log("meta", meta.value);
+        productsList.value = res?.data || [];
+        productMeta.value = res?.meta as unknown as IMeta;
+        console.log("productMeta", productMeta.value);
       } else {
         console.error("Failed to fetch products:", res.message);
       }
