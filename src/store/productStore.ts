@@ -9,17 +9,15 @@ export const useProductStore = defineStore("product", () => {
   const queryProduct = ref({
     page: 1,
     limit: 10,
-    search: "product",
+    search: "",
   });
 
   const GET_PRODUCT = async () => {
     try {
       const res = await get<any[]>("api/products", {
-        params: {
-          page: queryProduct.value.page,
-          limit: queryProduct.value.limit,
-          search: queryProduct.value.search,
-        },
+        page: queryProduct.value.page,
+        limit: queryProduct.value.limit,
+        search: queryProduct.value.search,
       });
 
       if (res.message === "success") {

@@ -8,13 +8,20 @@ type Response<T> = {
   statusCode: number;
   message: string;
 };
+
 export const get = async <T>(
   endpoint: string,
-  p0: { params: { page: number; limit: number; search: string } }
+  params: { page: number; limit: number; search: string }
 ): Promise<Response<T>> => {
-  // Ensure baseUrl is properly defined and used
-  const response = await fetch(`${baseUrl}/${endpoint}`, {
-    // Add slash if needed
+  // Construct query string from params
+  const queryString = new URLSearchParams({
+    page: params.page.toString(),
+    limit: params.limit.toString(),
+    search: params.search,
+  }).toString();
+
+  // Fetch data with query parameters
+  const response = await fetch(`${baseUrl}/${endpoint}?${queryString}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -22,11 +29,9 @@ export const get = async <T>(
   });
 
   if (!response.ok) {
-    // Improve error handling with more detailed error message
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
 
-  // Type the return value using the Response type
   return (await response.json()) as Response<T>;
 };
 
