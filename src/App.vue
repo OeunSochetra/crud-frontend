@@ -1,6 +1,5 @@
 <template>
   <div v-for="(item, index) in productStore.productsList" :key="index">
-    <!-- test -->
     <div class="max-w-sm rounded overflow-hidden shadow-lg">
       <img
         src="https://i.pinimg.com/control/474x/10/3b/27/103b2707be96ee0b90e6c9e2701d4f46.jpg"
