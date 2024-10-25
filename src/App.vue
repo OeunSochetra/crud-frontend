@@ -1,4 +1,6 @@
 <template>
+  <HelloWorld />
+
   <div>
     <form
       @submit.prevent="submitForm"
@@ -119,14 +121,6 @@ const submitForm = async () => {
     alert("Please fill in all required fields.");
     return;
   }
-
-  console.log(
-    "payload",
-    createProduct.value.name,
-    createProduct.value.description,
-    createProduct.value.price,
-    createProduct.value.stock
-  );
   await productStore.CREATE_PRODUCT(createProduct.value);
   // Clear the form after submission
   createProduct.value = {
