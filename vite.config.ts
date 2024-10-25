@@ -10,7 +10,7 @@ export default defineConfig({
       extensions: ["vue"],
       include: [/\.vue$/, /\.vue\?vue/],
       dts: "types/components.d.ts",
-      dirs: ["src/components"],
+      dirs: ["src/components", "src/views/**/components"],
       exclude: [
         /[\\/]node_modules[\\/]/,
         /[\\/]\.git[\\/]/,

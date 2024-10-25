@@ -20,6 +20,7 @@ export const useProductStore = defineStore("product", () => {
       const res = await post<ICreateProduct>("api/products", data);
 
       if (res.message === "success") {
+        // productsList.value.unshift(data);
         console.log("Product created successfully");
       } else {
         console.error("Failed to create product:", res.message);
