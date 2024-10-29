@@ -1,3 +1,3 @@
 <template>
-  <UiCard />
+  <div>Home</div>
 </template>
