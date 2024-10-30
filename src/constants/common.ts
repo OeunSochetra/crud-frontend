@@ -22,3 +22,16 @@ export interface ICreateProduct {
   description: string;
   stock: number | null;
 }
+
+export interface ILoginResponse {
+  message: string;
+  data: {
+    accessToken: string;
+  };
+  meta?: Record<string, any>;
+}
+
+export interface ILogin {
+  username: string;
+  password: string;
+}

@@ -41,12 +41,28 @@
 
 <script setup>
 import { ref } from "vue";
+import { useAuthStore } from "../../store/auth";
+import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const authStore = useAuthStore();
+// const { LOGIN } = useAuthStore();
 
 const username = ref("");
 const password = ref("");
 
-const login = () => {
-  console.log(username.value, password.value);
+const login = async () => {
+  try {
+    await authStore.LOGIN({
+      username: username.value,
+      password: password.value,
+    });
+    router.push("/product");
+  } catch (error) {
+    console.log("error", error);
+  }
 };
 </script>
 

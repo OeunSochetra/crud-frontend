@@ -50,14 +50,23 @@ export const useProductStore = defineStore("product", () => {
     }
   };
 
+  const GET_PRODUCT_DETAIL = async (id: string) => {
+    try {
+      const res = await get<{ message: string }>("api/products" + id);
+      if (res.message === "success") {
+        return res;
+      }
+    } catch (error) {
+      console.error("Error fetching product detail:", error);
+    }
+  };
+
   const DELETE_PRODUCT = async (id: string) => {
     try {
       const res = await deleteData<{ message: string }>("api/products", id);
 
       if (res.message === "success") {
-        console.log("Product deleted successfully");
-      } else {
-        console.error("Failed to delete product:", res.message);
+        return res;
       }
     } catch (error) {
       console.error("Error deleting product:", error);
@@ -71,6 +80,7 @@ export const useProductStore = defineStore("product", () => {
 
     CREATE_PRODUCT,
     GET_PRODUCT,
+    GET_PRODUCT_DETAIL,
     DELETE_PRODUCT,
   };
 });

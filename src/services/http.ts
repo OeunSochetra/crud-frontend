@@ -1,6 +1,9 @@
 // import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 const baseUrl = import.meta.env.VITE_API_BASE_URI;
+// const authStore = useAuthStore();
+// const token = authStore?.accessToken;
+const token = localStorage.getItem("accessToken");
 
 type Response<T> = {
   data: T;
@@ -19,6 +22,7 @@ export const post = async <T>(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
@@ -34,22 +38,28 @@ export const post = async <T>(
 
 export const get = async <T>(
   endpoint: string,
-  params: { page: number; limit: number; search: string }
+  params?: { page?: number; limit?: number; search?: string }
 ): Promise<Response<T>> => {
-  // Construct query string from params
-  const queryString = new URLSearchParams({
-    page: params.page.toString(),
-    limit: params.limit.toString(),
-    search: params.search,
-  }).toString();
+  // Construct query string only if params are provided
+  const queryString = params
+    ? new URLSearchParams({
+        ...(params.page ? { page: params.page.toString() } : {}),
+        ...(params.limit ? { limit: params.limit.toString() } : {}),
+        ...(params.search ? { search: params.search } : {}),
+      }).toString()
+    : "";
 
-  // Fetch data with query parameters
-  const response = await fetch(`${baseUrl}/${endpoint}?${queryString}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  // Fetch data with query parameters if any
+  const response = await fetch(
+    `${baseUrl}/${endpoint}${queryString ? `?${queryString}` : ""}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -68,6 +78,7 @@ export const deleteData = async <T>(
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   });
 
