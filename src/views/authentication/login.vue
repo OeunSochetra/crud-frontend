@@ -1,17 +1,19 @@
 <template>
   <div class="container">
     <div class="heading">Sign In</div>
-    <form action="" class="form">
+    <form @submit.prevent="login" class="form">
       <input
-        :required="false"
+        :required="true"
         class="input"
+        v-model="username"
         type="email"
         id="email"
         placeholder="E-mail"
       />
       <input
-        :required="false"
+        :required="true"
         class="input"
+        v-model="password"
         type="password"
         id="password"
         placeholder="Password"
@@ -37,7 +39,16 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+
+const username = ref("");
+const password = ref("");
+
+const login = () => {
+  console.log(username.value, password.value);
+};
+</script>
 
 <style scoped>
 .container {
@@ -118,6 +129,7 @@
   box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
   border: none;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .form .login-button:hover {
