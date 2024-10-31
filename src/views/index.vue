@@ -1,9 +1,11 @@
 <template>
-  <div>Home</div>
-  <p class="cursor-pointer" @click="$router.push(RouteName.PRODUCT)">
-    go to product
-  </p>
-  <p class="cursor-pointer" @click="logout()">Log Out</p>
+  <main class="flex items-center justify-center">
+    <div>Home</div>
+    <p class="cursor-pointer" @click="$router.push(RouteName.PRODUCT)">
+      go to product
+    </p>
+    <p class="cursor-pointer" @click="logout()">Log Out</p>
+  </main>
 </template>
 
 <script setup lang="ts">

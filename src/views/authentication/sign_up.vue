@@ -3,6 +3,7 @@
     <div class="heading">Sign Up</div>
     <form @submit.prevent="login" class="form">
       <input
+        autocomplete="username"
         :required="true"
         class="input"
         v-model="username"
@@ -10,11 +11,20 @@
         placeholder="username"
       />
       <input
+        autocomplete="username"
         :required="true"
         class="input"
         v-model="password"
         type="password"
         placeholder="Password"
+      />
+      <input
+        autocomplete="username"
+        :required="true"
+        class="input"
+        v-model="password"
+        type="password"
+        placeholder="Confirm Password"
       />
       <span class="forgot-password"><a href="#">Forgot Password ?</a></span>
       <input class="login-button" type="submit" value="Sign In" />

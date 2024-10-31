@@ -6,34 +6,53 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
+      path: "/'",
+      name: RouteName.AUTH_LAYOUT,
+      component: () => import("../views/layout/AuthLayout.vue"),
+      children: [
+        {
+          path: "/sign_in",
+          name: RouteName.SIGN_IN,
+          component: () => import("../views/authentication/sign_in.vue"),
+          meta: { requiresAuth: false, keepAlive: true, title: "Sign Up" },
+        },
+        {
+          path: "/sign_up",
+          name: RouteName.SIGN_UP,
+          component: () => import("../views/authentication/sign_up.vue"),
+          meta: { requiresAuth: false, keepAlive: true, title: "Sign In" },
+        },
+      ],
+    },
+    {
       path: "/",
-      name: RouteName.HOME,
-      component: () => import("../views/Home.vue"),
-      meta: { requiresAuth: true, keepAlive: true, title: "Home" },
-    },
-    {
-      path: "/sign_in",
-      name: RouteName.SIGN_IN,
-      component: () => import("../views/authentication/sign_in.vue"),
-      meta: { requiresAuth: false, keepAlive: true, title: "Sign Up" },
-    },
-    {
-      path: "/sign_up",
-      name: RouteName.SIGN_UP,
-      component: () => import("../views/authentication/sign_up.vue"),
-      meta: { requiresAuth: false, keepAlive: true, title: "Sign In" },
-    },
-    {
-      path: "/product",
-      name: RouteName.PRODUCT,
-      component: () => import("../views/Product.vue"),
-      meta: { requiresAuth: true, keepAlive: true, title: "Product" },
-    },
-    {
-      path: "/:pathMatch(.*)*",
-      name: RouteName.NOTFOUND,
-      component: () => import("../views/404/NotFound.vue"),
-      meta: { requiresAuth: true, keepAlive: true, title: "Page not found" },
+      name: RouteName.MAIN_LAYOUT,
+      component: () => import("../views/layout/MainLayout.vue"),
+      children: [
+        {
+          path: "",
+          name: RouteName.INDEX,
+          component: () => import("../views/index.vue"),
+          meta: { requiresAuth: true, keepAlive: true, title: "Home" },
+        },
+        {
+          path: "/product",
+          name: RouteName.PRODUCT,
+          component: () => import("../views/Product.vue"),
+          meta: { requiresAuth: true, keepAlive: true, title: "Product" },
+        },
+
+        {
+          path: "/:pathMatch(.*)*",
+          name: RouteName.NOTFOUND,
+          component: () => import("../views/404/NotFound.vue"),
+          meta: {
+            requiresAuth: true,
+            keepAlive: true,
+            title: "Page not found",
+          },
+        },
+      ],
     },
   ],
 });
