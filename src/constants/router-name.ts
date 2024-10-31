@@ -3,4 +3,5 @@ export default class RouteName {
   static SIGN_IN = "sign_in";
   static SIGN_UP = "sign_up";
   static PRODUCT = "product";
+  static NOTFOUND = "not_found";
 }

@@ -67,6 +67,29 @@ export const get = async <T>(
   return (await response.json()) as Response<T>;
 };
 
+// export function to update product
+
+export const put = async <T>(
+  endpoint: string,
+  id: string,
+  data: T
+): Promise<Response<T>> => {
+  const response = await fetch(`${baseUrl}/${endpoint}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Network response was not ok: ${response.statusText}`);
+  }
+
+  return (await response.json()) as Response<T>;
+};
+
 // export function to delete product
 
 export const deleteData = async <T>(
