@@ -3,63 +3,68 @@
     <div class="heading">Sign In</div>
     <form @submit.prevent="login" class="form">
       <input
+        autocomplete="username"
         :required="true"
         class="input"
         v-model="username"
-        type="email"
-        id="email"
-        placeholder="E-mail"
+        type="username"
+        placeholder="username"
       />
       <input
+        autocomplete="password"
         :required="true"
         class="input"
         v-model="password"
         type="password"
-        id="password"
         placeholder="Password"
       />
       <span class="forgot-password"><a href="#">Forgot Password ?</a></span>
       <input class="login-button" type="submit" value="Sign In" />
     </form>
-    <div class="social-account-container">
-      <span class="title">Or Sign in with</span>
-      <div class="social-accounts">
-        <button class="social-button google">
-          <IconGoogle />
-        </button>
-        <button class="social-button apple">
-          <IconApple />
-        </button>
-        <button class="social-button twitter">
-          <IconX />
-        </button>
-      </div>
-    </div>
-    <span class="agreement"><a href="#">Learn user licence agreement</a></span>
+    <!-- <div class="social-account-container">
+        <span class="title">Or Sign in with</span>
+        <div class="social-accounts">
+          <button class="social-button google">
+            <IconGoogle />
+          </button>
+          <button class="social-button apple">
+            <IconApple />
+          </button>
+          <button class="social-button twitter">
+            <IconX />
+          </button>
+        </div>
+      </div> -->
+    <span
+      @click="$router.push(RouteName.SIGN_UP)"
+      class="text-[10px] text-secondaryText cursor-pointer"
+      >Don't have account?</span
+    >
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from "vue";
 import { useAuthStore } from "../../store/auth";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
+import RouteName from "../../constants/router-name";
 
 const router = useRouter();
 
 const authStore = useAuthStore();
-// const { LOGIN } = useAuthStore();
+const { SIGN_IN } = useAuthStore();
 
 const username = ref("");
 const password = ref("");
 
 const login = async () => {
   try {
-    await authStore.LOGIN({
+    await SIGN_IN({
       username: username.value,
       password: password.value,
     });
-    router.push("/product");
+    router.push("/");
   } catch (error) {
     console.log("error", error);
   }

@@ -1,6 +1,6 @@
 export default class RouteName {
   static HOME = "home";
-  static LOGIN = "login";
-  static REGISTER = "register";
+  static SIGN_IN = "sign_in";
+  static SIGN_UP = "sign_up";
   static PRODUCT = "product";
 }

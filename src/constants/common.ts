@@ -23,7 +23,7 @@ export interface ICreateProduct {
   stock: number | null;
 }
 
-export interface ILoginResponse {
+export interface ISignInResponse {
   message: string;
   data: {
     accessToken: string;
@@ -31,7 +31,7 @@ export interface ILoginResponse {
   meta?: Record<string, any>;
 }
 
-export interface ILogin {
+export interface ISignIn {
   username: string;
   password: string;
 }

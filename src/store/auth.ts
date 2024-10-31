@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ILogin } from "../constants/common";
+import { ISignIn } from "../constants/common";
 import { ref } from "vue";
 import { post } from "../services/http";
 
@@ -7,7 +7,7 @@ export const useAuthStore = defineStore("auth", () => {
   const isAuthenticated = ref<boolean>(false);
   const accessToken = ref<string>("");
 
-  const LOGIN = async (payload: ILogin) => {
+  const SIGN_IN = async (payload: ISignIn) => {
     try {
       const res = await post<any>("api/login", payload);
       if (res.message === "success") {
@@ -22,21 +22,18 @@ export const useAuthStore = defineStore("auth", () => {
     }
   };
 
-  const LOGOUT = () => {
+  const SIGN_OUT = () => {
     isAuthenticated.value = false;
     accessToken.value = "";
     localStorage.removeItem("accessToken");
   };
-
-  //   const REGISTER = () => {};
 
   return {
     isAuthenticated,
     accessToken,
 
     // Function
-    LOGIN,
-    LOGOUT,
-    // REGISTER,
+    SIGN_IN,
+    SIGN_OUT,
   };
 });

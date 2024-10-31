@@ -13,7 +13,6 @@ type Response<T> = {
 };
 
 // export function to create new product
-
 export const post = async <T>(
   endpoint: string,
   data: T
