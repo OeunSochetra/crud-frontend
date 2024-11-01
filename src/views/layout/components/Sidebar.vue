@@ -9,9 +9,24 @@
         v-for="(item, index) in menu"
         :key="index"
         class="group cursor-pointer"
+        :class="{
+          'text-white bg-primary px-2.5 py-2.5 rounded-full transition duration-200 ease-in-out':
+            activeRoute(item.route),
+          ' group-hover:text-primary transition duration-200 ease-in-out':
+            !activeRoute(item.route),
+        }"
         @click="navigator(item.route)"
       >
-        <component :is="item.icon" />
+        <component
+          :is="item.icon"
+          width="20"
+          height="20"
+          :class="{
+            ' text-white': activeRoute(item.route),
+            'group-hover:text-primary transition duration-200 ease-in-out':
+              !activeRoute(item.route),
+          }"
+        />
       </p>
     </div>
     <span @click="logout" class="mb-6 text-center text-[12px] cursor-pointer">
@@ -31,6 +46,10 @@ const isHover = ref<boolean>(false);
 
 const navigator = (route: string) => {
   router.push(route);
+};
+
+const activeRoute = (routeName: string) => {
+  return router.currentRoute.value.name === routeName;
 };
 
 const router = useRouter();
