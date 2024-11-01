@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-white p-4 rounded-lg mt-10">
+  <div class="w-full bg-white shadow-md p-4 rounded-lg mt-10">
     <div class="flex gap-4">
       <div>
         <img

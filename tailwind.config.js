@@ -14,6 +14,9 @@ export default {
         montserrat: ["Montserrat"],
         inter: ["inter"],
       },
+      backgroundImage: {
+        "custom-gradient": "linear-gradient(90deg, #0E89D3 0%, #0DAED1 100%)",
+      },
     },
   },
   plugins: [],

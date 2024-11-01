@@ -1,16 +1,14 @@
 <template>
   <div
-    class="flex flex-col justify-between bg-backgroundColor shadow-lg w-24 h-screen overflow-hidden"
+    class="flex flex-col justify-between bg-backgroundColor shadow-lg w-24 h-screen"
   >
-    <div
-      class="flex flex-col gap-6 cursor-pointer items-center mt-[20rem] overflow-hidden"
-    >
+    <div class="flex flex-col gap-6 cursor-pointer items-center mt-[20rem]">
       <p
         v-for="(item, index) in menu"
         :key="index"
         class="group cursor-pointer"
         :class="{
-          'text-white bg-primary px-2.5 py-2.5 rounded-full transition duration-200 ease-in-out':
+          'text-white bg-custom-gradient px-2.5 py-2.5 rounded-full transition duration-200 ease-in-out':
             activeRoute(item.route),
           ' group-hover:text-primary transition duration-200 ease-in-out':
             !activeRoute(item.route),
