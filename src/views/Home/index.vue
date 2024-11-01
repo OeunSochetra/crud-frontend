@@ -1,6 +1,10 @@
 <template>
-  <div class="flex flex-col gap-4">
-    <div class="flex items-center justify-between">
+  <div class="mt-10">
+    <Hero />
+  </div>
+
+  <div class="flex flex-col gap-4 mt-24">
+    <!-- <div class="flex items-center justify-between">
       <p class="flex text-[18px] gap-2">
         <span class="font-bold">Best</span>
         <span class="font-normal">Seller</span>
@@ -13,9 +17,7 @@
       >
         Click me
       </Button>
-    </div>
-
-    <Loader />
+    </div> -->
 
     <div class="grid grid-cols-3 gap-4">
       <BookCard

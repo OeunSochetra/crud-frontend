@@ -1,11 +1,15 @@
 <!-- src/layouts/MainLayout.vue -->
 <template>
-  <div class="w-full flex items-start gap-4">
+  <div class="w-full flex justify-between">
     <Sidebar />
-    <router-view />
+    <div class="">
+      <router-view />
+    </div>
+
+    <SidebarRight />
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 // Any layout-specific logic here
 </script>
