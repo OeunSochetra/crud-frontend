@@ -1,59 +1,7 @@
 <template>
-  <!-- <div class="">
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-    <p>Hello Home</p>
-  </div> -->
-  Hello Home
+  <div class="flex items-center justify-center">
+    <BookCard />
+  </div>
 </template>
 
 <script setup lang="ts"></script>
