@@ -9,25 +9,25 @@
     <g clip-path="url(#clip0_1222_37410)">
       <path
         d="M12.5 0.5H1.5C0.947715 0.5 0.5 0.947715 0.5 1.5V12.5C0.5 13.0523 0.947715 13.5 1.5 13.5H12.5C13.0523 13.5 13.5 13.0523 13.5 12.5V1.5C13.5 0.947715 13.0523 0.5 12.5 0.5Z"
-        stroke="black"
+        stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M0.5 3.5H13.5"
-        stroke="black"
+        stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M7 3.5V13.5"
-        stroke="black"
+        stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
       <path
         d="M0.5 8.5H13.5"
-        stroke="black"
+        stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
       />

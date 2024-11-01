@@ -32,9 +32,34 @@ const router = createRouter({
         {
           path: "",
           name: RouteName.INDEX,
-          component: () => import("../views/index.vue"),
+          component: () => import("../views/Home/index.vue"),
           meta: { requiresAuth: true, keepAlive: true, title: "Home" },
         },
+        {
+          path: "/library",
+          name: RouteName.LIBRARY,
+          component: () => import("../views/library/index.vue"),
+          meta: { requiresAuth: true, keepAlive: true, title: "Library" },
+        },
+        {
+          path: "/setting",
+          name: RouteName.SETTING,
+          component: () => import("../views/setting/index.vue"),
+          meta: { requiresAuth: true, keepAlive: true, title: "Setting" },
+        },
+        {
+          path: "/search",
+          name: RouteName.SEARCH,
+          component: () => import("../views/search/index.vue"),
+          meta: { requiresAuth: true, keepAlive: true, title: "Search" },
+        },
+        {
+          path: "/question",
+          name: RouteName.QUESTION,
+          component: () => import("../views/question/index.vue"),
+          meta: { requiresAuth: true, keepAlive: true, title: "Question" },
+        },
+
         {
           path: "/product",
           name: RouteName.PRODUCT,
