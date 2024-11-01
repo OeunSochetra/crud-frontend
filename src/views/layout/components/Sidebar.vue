@@ -27,8 +27,10 @@
         />
       </p>
     </div>
-    <span @click="logout" class="mb-6 text-center text-[12px] cursor-pointer">
-      Log Out
+    <span @click="logout" class="mb-6 flex items-center justify-center">
+      <div class="Btn cursor-pointer px-3 py-3 rounded-full">
+        <IconSignOut class="text-white" />
+      </div>
     </span>
   </div>
 </template>
@@ -59,4 +61,9 @@ const logout = async () => {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.Btn {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background: linear-gradient(90deg, #0e89d3, #0daed1);
+}
+</style>

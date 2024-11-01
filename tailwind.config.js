@@ -9,6 +9,8 @@ export default {
         backgroundColor: "#F5F7FB",
         primaryText: "#AAAAAA",
         secondaryText: "#0099FF",
+        danger: "#FF662F",
+        secondaryDanger: "#FD8A69",
       },
       fontFamily: {
         montserrat: ["Montserrat"],
