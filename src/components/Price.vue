@@ -16,12 +16,14 @@
 import { computed, defineProps } from "vue";
 
 interface Props {
-  price: number;
   originalPrice?: number;
+  discountPrice: number;
 }
 const props = defineProps<Props>();
 
-const formattedPrice = computed(() => Math.floor(props.price));
-const decimalPart = computed(() => ((props.price % 1) * 100).toFixed(0));
+const formattedPrice = computed(() => Math.floor(props.discountPrice));
+const decimalPart = computed(() =>
+  ((props.discountPrice % 1) * 100).toFixed(0)
+);
 </script>
 <style scoped></style>

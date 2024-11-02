@@ -17,11 +17,13 @@ export interface IProduct {
 }
 
 export interface IBook {
-  OriginalPrice: number;
-  SellingPrice: number;
+  originalPrice: number;
+  discountPrice: number;
   author: string;
   createdAt: string;
   description: string;
+  ratingStar: number;
+  ratingCount: number;
   image: string;
   title: string;
   updatedAt: string;

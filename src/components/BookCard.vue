@@ -22,10 +22,14 @@
             {{ description }}
           </p>
           <span class="flex items-center gap-2.5">
-            <Rate /> <span class="text-[14px]">(457)</span>
+            <Rate />
+            <span class="text-[14px]"> ({{ ratingCount }}) </span>
           </span>
           <p class="text-black font-semibold">
-            <Price :price="19.99" :originalPrice="39.99" />
+            <Price
+              :discountPrice="discountPrice ?? 0"
+              :originalPrice="originalPrice ?? 0"
+            />
           </p>
         </span>
         <span class="cursor-pointer"><IconClickDot /></span>
@@ -34,6 +38,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import Rate from "./Rate.vue";
+import Price from "./Price.vue";
 import { defineProps } from "vue";
 
 interface Props {
@@ -41,6 +47,10 @@ interface Props {
   author: string;
   title: string;
   description: string;
+  originalPrice?: number;
+  discountPrice?: number;
+  ratingCount?: number;
+  ratingStar?: number;
 }
 const props = defineProps<Props>();
 </script>
