@@ -22,7 +22,7 @@
             {{ description }}
           </p>
           <span class="flex items-center gap-2.5">
-            <Rate />
+            <Rate :ratingStar="ratingStar" />
             <span class="text-[14px]"> ({{ ratingCount }}) </span>
           </span>
           <p class="text-black font-semibold">
