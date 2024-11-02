@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-white shadow-md p-4 rounded-lg">
+  <div class="w-[21rem] bg-white shadow-md p-4 rounded-lg">
     <div class="flex gap-4">
       <div>
         <img
@@ -10,9 +10,15 @@
       </div>
       <div class="flex gap-6">
         <span class="flex flex-col gap-1">
-          <p class="text-primary font-semibold capitalize">{{ author }}</p>
-          <p class="text-black font-semibold capitalize">{{ title }}</p>
-          <p class="text-primaryText font-normal text-[14px]">
+          <p class="text-primary font-semibold capitalize w-[150px] truncate">
+            {{ author }}
+          </p>
+          <p class="text-black font-semibold capitalize w-[140px] truncate">
+            {{ title }}
+          </p>
+          <p
+            class="text-primaryText font-normal text-[14px] w-[140px] truncate"
+          >
             {{ description }}
           </p>
           <span class="flex items-center gap-2.5">

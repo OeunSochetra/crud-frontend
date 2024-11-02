@@ -16,6 +16,19 @@ export interface IProduct {
   __v: number;
 }
 
+export interface IBook {
+  OriginalPrice: number;
+  SellingPrice: number;
+  author: string;
+  createdAt: string;
+  description: string;
+  image: string;
+  title: string;
+  updatedAt: string;
+  __v: number;
+  _id: string;
+}
+
 export interface ICreateProduct {
   name: string;
   price: number | null;
