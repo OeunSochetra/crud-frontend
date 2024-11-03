@@ -1,18 +1,23 @@
 <template>
-  <div class="w-full flex flex-col">
-    <loader v-if="loading"></loader>
-    <div class="grid grid-cols-3 gap-4">
+  <div
+    :class="[
+      'w-full flex flex-col',
+      loading ? 'flex items-center justify-center h-screen' : '',
+    ]"
+  >
+    <Loader class="" v-if="loading" />
+    <div v-else class="grid grid-cols-3 gap-4">
       <BookCard
         v-for="(item, index) in booksList"
         :key="index"
         :image="item?.image"
-        :author="item.author"
-        :title="item.title"
-        :description="item.description"
-        :ratingCount="item.ratingCount"
-        :originalPrice="item.originalPrice"
-        :discountPrice="item.discountPrice"
-        :ratingStar="item.ratingStar"
+        :author="item?.author"
+        :title="item?.title"
+        :description="item?.description"
+        :ratingCount="item?.ratingCount"
+        :originalPrice="item?.originalPrice"
+        :discountPrice="item?.discountPrice"
+        :ratingStar="item?.ratingStar"
       />
     </div>
   </div>
@@ -22,6 +27,7 @@
 import { useBookStore } from "../../store/bookStore";
 import { storeToRefs } from "pinia";
 import BookCard from "../../components/BookCard.vue";
+import Loader from "../../components/Loader.vue";
 import { onMounted, ref } from "vue";
 
 const bookStore = useBookStore();

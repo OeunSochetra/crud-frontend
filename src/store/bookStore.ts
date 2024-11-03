@@ -7,6 +7,7 @@ export const useBookStore = defineStore("book", () => {
   const baseURI = "api/books";
 
   const booksList = ref<IBook[]>([]);
+  const topBooksList = ref<IBook[]>([]);
   const bookMeta = ref<IMeta | null>(null);
 
   const queryBook = ref({
@@ -36,9 +37,25 @@ export const useBookStore = defineStore("book", () => {
     }
   };
 
+  const GET_TOP_BOOK = async () => {
+    try {
+      const res = await get<IBook[]>(`${baseURI}/top`);
+
+      if (res.message === "success") {
+        topBooksList.value = res.data;
+      } else {
+        console.error("Failed to fetch top books:", res.message);
+      }
+    } catch (error) {
+      console.error("Error fetching top books:", error);
+    }
+  };
+
   return {
     booksList,
+    topBooksList,
     queryBook,
     GET_BOOK,
+    GET_TOP_BOOK,
   };
 });

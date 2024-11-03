@@ -5,7 +5,7 @@
     </div>
     <div class="grid grid-cols-3 gap-4 mt-5">
       <BookCard
-        v-for="(item, index) in booksList"
+        v-for="(item, index) in topBooksList"
         :key="index"
         :image="item?.image"
         :author="item.author"
@@ -28,15 +28,13 @@ import Hero from "../../components/Hero.vue";
 import { onMounted, ref } from "vue";
 
 const bookStore = useBookStore();
-const { booksList, queryBook } = storeToRefs(bookStore);
-const { GET_BOOK } = useBookStore();
-
-const search = ref("");
+const { topBooksList } = storeToRefs(bookStore);
+const { GET_TOP_BOOK } = useBookStore();
 const loading = ref(false);
 
 const fetchData = async () => {
   loading.value = true;
-  await GET_BOOK();
+  await GET_TOP_BOOK();
   loading.value = false;
 };
 
