@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="heading">Sign Up</div>
-    <form @submit.prevent="login" class="form">
+    <form @submit.prevent="register" class="form">
       <input
         autocomplete="username"
         :required="true"
@@ -17,14 +17,6 @@
         v-model="password"
         type="password"
         placeholder="Password"
-      />
-      <input
-        autocomplete="username"
-        :required="true"
-        class="input"
-        v-model="password"
-        type="password"
-        placeholder="Confirm Password"
       />
       <span class="forgot-password"><a href="#">Forgot Password ?</a></span>
       <input class="login-button" type="submit" value="Sign In" />
@@ -50,27 +42,18 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useAuthStore } from "../../store/auth";
-import { storeToRefs } from "pinia";
-import { useRouter } from "vue-router";
+// import { useRouter } from "vue-router";
 
-const router = useRouter();
-
-const authStore = useAuthStore();
-const { SIGN_IN } = useAuthStore();
+// const router = useRouter();
+const { SIGN_UP } = useAuthStore();
 
 const username = ref("");
 const password = ref("");
 
-const login = async () => {
-  try {
-    await SIGN_IN({
-      username: username.value,
-      password: password.value,
-    });
-    router.push("/");
-  } catch (error) {
-    console.log("error", error);
-  }
+const register = async () => {
+  await SIGN_UP({ username: username.value, password: password.value });
+  username.value = "";
+  password.value = "";
 };
 </script>
 

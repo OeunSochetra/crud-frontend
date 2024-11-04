@@ -28,6 +28,19 @@ export const useAuthStore = defineStore("auth", () => {
     localStorage.removeItem("accessToken");
   };
 
+  const SIGN_UP = async (payload: ISignIn) => {
+    try {
+      const res = await post<any>("api/register", payload);
+      if (res.message === "success") {
+        console.log("Register successfully)");
+      } else {
+        console.error("Failed to register:", res.message);
+      }
+    } catch (error) {
+      console.error("Error registering:", error);
+    }
+  };
+
   return {
     isAuthenticated,
     accessToken,
@@ -35,5 +48,6 @@ export const useAuthStore = defineStore("auth", () => {
     // Function
     SIGN_IN,
     SIGN_OUT,
+    SIGN_UP,
   };
 });
