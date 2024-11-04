@@ -8,6 +8,7 @@ export const useBookStore = defineStore("book", () => {
 
   const booksList = ref<IBook[]>([]);
   const topBooksList = ref<IBook[]>([]);
+  const bookDetail = ref<IBook | null>(null);
   const bookMeta = ref<IMeta | null>(null);
 
   const queryBook = ref({
@@ -27,8 +28,6 @@ export const useBookStore = defineStore("book", () => {
       if (res.message === "success") {
         booksList.value = res?.data;
         bookMeta.value = res?.meta as unknown as IMeta;
-        console.log("Books fetched from res", res.data);
-        console.log("Books fetched from store", booksList.value);
       } else {
         console.error("Failed to fetch books:", res.message);
       }
@@ -51,11 +50,26 @@ export const useBookStore = defineStore("book", () => {
     }
   };
 
+  const GET_BOOK_DETAIL = async (id: string) => {
+    try {
+      const res = await get<IBook>(`${baseURI}/${id}`);
+      if (res.message === "success") {
+        bookDetail.value = res.data;
+      } else {
+        console.error("Failed to fetch book detail:", res.message);
+      }
+    } catch (error) {
+      console.error("Error fetching book detail:", error);
+    }
+  };
+
   return {
     booksList,
     topBooksList,
+    bookDetail,
     queryBook,
     GET_BOOK,
     GET_TOP_BOOK,
+    GET_BOOK_DETAIL,
   };
 });

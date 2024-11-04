@@ -16,5 +16,4 @@
 <script setup lang="ts">
 import Sidebar from "./components/Sidebar.vue";
 import SidebarRight from "./components/SidebarRight.vue";
-// Any layout-specific logic here
 </script>

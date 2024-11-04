@@ -40,20 +40,32 @@ import { useRouter } from "vue-router";
 import { menu } from "../../../constants/constant";
 import { useAuthStore } from "../../../store/auth";
 import RouteName from "../../../constants/router-name";
-import { ref } from "vue";
-
-const isHover = ref<boolean>(false);
-
-const navigator = (route: string) => {
-  router.push(route);
-};
-
-const activeRoute = (routeName: string) => {
-  return router.currentRoute.value.name === routeName;
-};
 
 const router = useRouter();
 const authStore = useAuthStore();
+
+const navigator = (route: string) => {
+  router.push({ name: route });
+};
+
+const activeRoute = (routeName: string) => {
+  const currentRoute = router.currentRoute.value;
+
+  // Check if the current route is the same as the given route name
+  if (currentRoute.name === routeName) {
+    return true;
+  }
+
+  // Check if the current route is a child of the given route (in this case, Search)
+  if (
+    routeName === RouteName.SEARCH &&
+    currentRoute.path.startsWith("/search")
+  ) {
+    return true;
+  }
+
+  return false;
+};
 
 const logout = async () => {
   await authStore.SIGN_OUT();
