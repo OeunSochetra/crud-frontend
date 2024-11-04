@@ -30,8 +30,13 @@
       </div>
     </div>
     <span class="border border-#D2D2D2 -translate-y-[47rem]"></span>
+
+      <Categories />
+ 
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Categories from "../../../components/Categories.vue";
+</script>
 <style scoped></style>

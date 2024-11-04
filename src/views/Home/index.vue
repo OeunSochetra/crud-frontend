@@ -3,6 +3,7 @@
     <div>
       <Hero />
     </div>
+
     <div class="grid grid-cols-3 gap-4 mt-5">
       <BookCard
         v-for="(item, index) in topBooksList"
@@ -24,6 +25,7 @@
 import { useBookStore } from "../../store/bookStore";
 import { storeToRefs } from "pinia";
 import BookCard from "../../components/BookCard.vue";
+import Categories from "../../components/Categories.vue";
 import Hero from "../../components/Hero.vue";
 import { onMounted, ref } from "vue";
 

@@ -1,6 +1,8 @@
 <!-- src/views/NotFound.vue -->
 <template>
-  <div class="not-found">
+  <div
+    class="flex flex-col items-center justify-center h-screen -translate-y-24 overflow-visible"
+  >
     <h1>404</h1>
     <p>Page Not Found</p>
     <router-link to="/">Go back to Home</router-link>
@@ -11,9 +13,4 @@
 // You can add any additional setup code here if needed
 </script>
 
-<style scoped>
-.not-found {
-  text-align: center;
-  margin-top: 2rem;
-}
-</style>
+<style scoped></style>
