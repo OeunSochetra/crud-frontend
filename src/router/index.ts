@@ -54,6 +54,12 @@ const router = createRouter({
           meta: { requiresAuth: true, keepAlive: true, title: "Search" },
         },
         {
+          path: "/search/book_detail/:id",
+          name: RouteName.BOOK_DETAIL,
+          component: () => import("../views/search/bookDetail.vue"),
+          meta: { requiresAuth: true, keepAlive: true, title: "Book Detail" },
+        },
+        {
           path: "/question",
           name: RouteName.QUESTION,
           component: () => import("../views/question/index.vue"),

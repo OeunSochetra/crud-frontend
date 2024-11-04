@@ -10,4 +10,5 @@ export default class RouteName {
   static SETTING = "setting";
   static SEARCH = "search";
   static QUESTION = "question";
+  static BOOK_DETAIL = "book_detail";
 }
