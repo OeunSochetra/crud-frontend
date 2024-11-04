@@ -11,4 +11,5 @@ export default class RouteName {
   static SEARCH = "search";
   static QUESTION = "question";
   static BOOK_DETAIL = "book_detail";
+  static PROFILE = "profile";
 }

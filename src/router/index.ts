@@ -65,7 +65,12 @@ const router = createRouter({
           component: () => import("../views/question/index.vue"),
           meta: { requiresAuth: true, keepAlive: true, title: "Question" },
         },
-
+        {
+          path: "/profile",
+          name: RouteName.PROFILE,
+          component: () => import("../views/profile/index.vue"),
+          meta: { requiresAuth: true, keepAlive: true, title: "Profile" },
+        },
         {
           path: "/product",
           name: RouteName.PRODUCT,

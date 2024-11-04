@@ -18,7 +18,7 @@ const props = defineProps<Props>();
 
 const buttonClasses = computed(() => {
   return [
-    "rounded-full w-[8rem] font-semibold transition duration-300",
+    "rounded-full bg-custom-gradient w-[8rem] py-2 font-semibold transition duration-300",
     {
       "bg-secondary text-white hover:bg-primary": props.type === "primary",
       "bg-primary text-white hover:bg-secondary": props.type === "secondary",
