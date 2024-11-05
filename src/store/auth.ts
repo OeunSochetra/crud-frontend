@@ -1,15 +1,17 @@
 import { defineStore } from "pinia";
-import { ISignIn } from "../constants/common";
+import { ISignIn, IMeProfile } from "../constants/common";
 import { ref } from "vue";
-import { post } from "../services/http";
+import { get, post } from "../services/http";
 
 export const useAuthStore = defineStore("auth", () => {
+  const baseURl = "api/auth";
   const isAuthenticated = ref<boolean>(false);
   const accessToken = ref<string>("");
+  const meProfile = ref<IMeProfile>();
 
   const SIGN_IN = async (payload: ISignIn) => {
     try {
-      const res = await post<any>("api/login", payload);
+      const res = await post<any>(`${baseURl}/login`, payload);
       if (res.message === "success") {
         accessToken.value = res.data.accessToken;
         isAuthenticated.value = true;
@@ -30,7 +32,7 @@ export const useAuthStore = defineStore("auth", () => {
 
   const SIGN_UP = async (payload: ISignIn) => {
     try {
-      const res = await post<any>("api/register", payload);
+      const res = await post<any>(`${baseURl}/register`, payload);
       if (res.message === "success") {
         console.log("Register successfully)");
       } else {
@@ -41,13 +43,28 @@ export const useAuthStore = defineStore("auth", () => {
     }
   };
 
+  const GET_ME = async () => {
+    try {
+      const res = await get<IMeProfile>(`api/me`);
+      if (res.message === "success") {
+        meProfile.value = res.data;
+      } else {
+        console.error("Failed to get me:", res.message);
+      }
+    } catch (error) {
+      console.error("Error getting me:", error);
+    }
+  };
+
   return {
     isAuthenticated,
     accessToken,
+    meProfile,
 
     // Function
     SIGN_IN,
     SIGN_OUT,
     SIGN_UP,
+    GET_ME,
   };
 });

@@ -48,5 +48,16 @@ export interface ISignInResponse {
 
 export interface ISignIn {
   username: string;
+  email: string;
   password: string;
+}
+
+export interface IMeProfile {
+  _id: string;
+  username: string;
+  email: string;
+  image: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: 0;
 }

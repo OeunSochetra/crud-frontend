@@ -8,14 +8,16 @@
           <img
             @click="$router.push(RouteName.PROFILE)"
             class="w-11 h-11 rounded-full shadow-lg object-cover border-2 border-primary cursor-pointer"
-            src="https://i.pinimg.com/564x/07/a4/f6/07a4f6a13dd8225226a99f381d3bc918.jpg"
+            :src="meProfile?.image"
             alt="profile"
           />
         </span>
         <span class="flex flex-col">
-          <p class="text-black font-semibold capitalize">anna lee</p>
-          <p class="text-primaryText font-normal capitalize text-[14px]">
-            Olexander
+          <p class="text-black font-semibold capitalize">
+            {{ meProfile?.username }}
+          </p>
+          <p class="text-primaryText font-normal capitalize text-[8px]">
+            {{ meProfile?.email }}
           </p>
         </span>
       </div>
@@ -39,5 +41,20 @@
 <script setup lang="ts">
 import Categories from "../../../components/Categories.vue";
 import RouteName from "../../../constants/router-name";
+import { useAuthStore } from "../../../store/auth";
+import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
+
+const authStore = useAuthStore();
+const { meProfile } = storeToRefs(authStore);
+const { GET_ME } = useAuthStore();
+
+const fetchMe = async () => {
+  await GET_ME();
+};
+
+onMounted(() => {
+  fetchMe();
+});
 </script>
 <style scoped></style>

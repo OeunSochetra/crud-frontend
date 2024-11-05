@@ -11,6 +11,14 @@
         placeholder="username"
       />
       <input
+        autocomplete="email"
+        :required="true"
+        class="input"
+        v-model="email"
+        type="email"
+        placeholder="email"
+      />
+      <input
         autocomplete="username"
         :required="true"
         class="input"
@@ -21,20 +29,6 @@
       <span class="forgot-password"><a href="#">Forgot Password ?</a></span>
       <input class="login-button" type="submit" value="Sign In" />
     </form>
-    <!-- <div class="social-account-container">
-      <span class="title">Or Sign in with</span>
-      <div class="social-accounts">
-        <button class="social-button google">
-          <IconGoogle />
-        </button>
-        <button class="social-button apple">
-          <IconApple />
-        </button>
-        <button class="social-button twitter">
-          <IconX />
-        </button>
-      </div>
-    </div> -->
     <span class="agreement"><a href="#">don't have account?</a></span>
   </div>
 </template>
@@ -49,10 +43,16 @@ const { SIGN_UP } = useAuthStore();
 
 const username = ref("");
 const password = ref("");
+const email = ref("");
 
 const register = async () => {
-  await SIGN_UP({ username: username.value, password: password.value });
+  await SIGN_UP({
+    username: username.value,
+    password: password.value,
+    email: email.value,
+  });
   username.value = "";
+  email.value = "";
   password.value = "";
 };
 </script>
